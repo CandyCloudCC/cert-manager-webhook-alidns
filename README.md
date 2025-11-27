@@ -17,6 +17,8 @@ go mod tidy
 go mod download
 go build -o cert-manager-webhook-alidns main.go
 
+CGO_ENABLED=0 go build -o cert-manager-webhook-alidns -ldflags '-w -extldflags "-static"' main.go
+
 # 本地运行（默认 groupName 为 alidns.webhook.cert-manager.io）
 GROUP_NAME=alidns.webhook.cert-manager.io ./cert-manager-webhook-alidns --help
 ```
@@ -33,8 +35,8 @@ docker build -t <registry>/cert-manager-webhook-alidns:latest .
 
 | 字段                 | 类型                | 说明                                         |
 | -------------------- | ------------------- | -------------------------------------------- |
-| `AccessKeyIdRef`     | `SecretKeySelector` | 必填，指向包含 Access Key ID 的 Secret       |
-| `AccessKeySecretRef` | `SecretKeySelector` | 必填，指向包含 Access Key Secret 的 Secret。 |
+| `accessKeyIdRef`     | `SecretKeySelector` | 必填，指向包含 Access Key ID 的 Secret       |
+| `accessKeySecretRef` | `SecretKeySelector` | 必填，指向包含 Access Key Secret 的 Secret。 |
 | `endpoint`           | `string`            | 可选，自定义 API Endpoint。                  |
 
 ## 示例：创建凭据

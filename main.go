@@ -198,7 +198,7 @@ func (s *AlidnsSolver) newAliDNSClient(ctx context.Context, ch *v1alpha1.Challen
 		return nil, fmt.Errorf("failed to construct alibabacloud Credentials")
 	}
 
-	if *config.Endpoint != "" {
+	if *config.Endpoint == "" {
 		config.Endpoint = tea.String("alidns.aliyuncs.com")
 	}
 

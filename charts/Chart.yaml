@@ -2,8 +2,8 @@ apiVersion: v2
 name: alidns-webhook
 description: Helm chart for deploying the Alibaba Cloud DNS webhook used by cert-manager for DNS01 challenges.
 type: application
-version: 0.1.0
-appVersion: "0.1.0"
+version: 0.1.1
+appVersion: "0.1.1"
 kubeVersion: ">=1.26.0-0"
 home: https://github.com/CandyCloudCC/cert-manager-webhook-alidns
 sources:
